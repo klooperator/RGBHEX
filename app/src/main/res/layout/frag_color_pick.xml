@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:id="@+id/masterLayoutFcp"
+	android:background="#aadd33"
+	>
+
+
+
+    <Button
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/ButtonBackgroundColorChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center_vertical|center_horizontal"
+        >
+    </Button>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rgbNumericValuesLL"
+        android:id="@+id/linearLayout"
+        android:layout_marginTop="@dimen/top_gap">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="a"
+                android:id="@+id/tvAlphaLetter"
+                android:layout_marginTop="@dimen/top_gap"
+                android:layout_gravity="center_horizontal" />
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarAlpha"
+                android:max="255"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/top_gap">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/red"
+                android:id="@+id/textView3"
+				android:textColor="#ff0000"/>
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarRED"
+                android:layout_weight="1"
+                android:max="255"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/top_gap">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/green"
+                android:id="@+id/textView2"
+				android:textColor="#00ff00"/>
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarGreen"
+                android:layout_weight="1"
+                android:max="255"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/top_gap">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/blue"
+                android:id="@+id/textView4"
+				android:textColor="#0000ff"/>
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarBlue"
+                android:layout_weight="1"
+                android:max="255"
+                android:indeterminate="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginTop="@dimen/top_gap"
+		android:id="@+id/largeButtonFrame"
+		android:clickable="true"
+        android:padding="@dimen/top_gap">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/background_rgb"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            android:background="#9b6cb2c6"
+            android:id="@+id/largeButton"></Button>
+
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ButtonBackgroundColorChange"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/rgbNumericValuesLL">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+			>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="RED"
+                android:id="@+id/tvRed" 
+				android:minEms="3"
+				android:layout_marginRight="@dimen/top_gap"
+				android:layout_marginLeft="@dimen/top_gap"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:maxLength="3" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="GREEN"
+				android:minEms="3"
+                android:id="@+id/tvGreen" 
+				android:layout_marginRight="@dimen/top_gap"
+				android:layout_marginLeft="@dimen/top_gap"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:maxLength="3" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="BLUE"
+				android:minEms="3"
+				
+                android:id="@+id/tvBlue" 
+				android:layout_marginRight="@dimen/top_gap"
+				android:layout_marginLeft="@dimen/top_gap"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:maxLength="3" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/top_gap"
+			android:layout_marginLeft="@dimen/top_gap">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="alpha"
+                android:id="@+id/tvAlpha"
+				android:minEms="3"
+                android:inputType="number"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="%"
+                android:id="@+id/tvAlphaPercent"
+                android:numeric="signed"
+                android:lines="1"
+				android:minEms="5"
+                android:paddingLeft="@dimen/top_gap"
+                android:paddingRight="@dimen/top_gap"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="alpha"
+                android:id="@+id/checkBoxAlpha" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Color"
+            android:id="@+id/tvColorTxt"
+            android:layout_marginTop="@dimen/top_gap"
+			android:editable="true"
+			android:clickable="true"/>
+
+    </LinearLayout>
+	
+
+
+</RelativeLayout>

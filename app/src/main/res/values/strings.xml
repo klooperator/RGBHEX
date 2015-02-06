@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RGB HEX</string>
+    <string name="action_settings">Settings</string>
+    <string name="red">R</string>
+    <string name="green">G</string>
+    <string name="blue">B</string>
+    <string name="alpha">\u0251</string>
+    <string name="paste">CLICK TO PASTE 
+		FROM CLIPBOARD</string>
+    <string name="paste_error">Can not recognize this color or format</string>
+    <string name="paste_nothing_there">There is nothing to paste</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
+    <string name="change_to_white">CHANGE BACKGORUND\n
+    TO WHITE</string>
+    <string name="change_to_black">CHANGE BACKGORUND\n
+    TO BLACK</string>
+
+
+</resources>
