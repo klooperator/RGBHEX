@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 
 
 
-
+        Log.v(TAG,"@onCreate-adding ad...");
         final AdView mAdView = (AdView) findViewById(R.id.adMob);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
