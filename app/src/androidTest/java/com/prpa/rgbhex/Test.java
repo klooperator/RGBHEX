@@ -1,5 +1,6 @@
 package com.prpa.rgbhex;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,7 +44,8 @@ public class Test {
         String regexValidator=start+hashColorValidator+end;
 
         Pattern pattern=Pattern.compile(hashColorValidator+"|"+
-										oneColorValidator+dot+oneColorValidator+dot+oneColorValidator);
+				oneColorValidator+dot+oneColorValidator+dot+oneColorValidator+dot+oneColorValidator+"|"+
+                oneColorValidator+dot+oneColorValidator+dot+oneColorValidator);
         //Pattern pattern=Pattern.compile(regexValidator);
         Matcher matcher=pattern.matcher(s);
         //System.out.println(regexValidator);
