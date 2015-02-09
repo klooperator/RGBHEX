@@ -33,79 +33,63 @@ public class ColorValidator {
         context=c;
     }
 
-    public int getColor(String s){
-        Pattern pattern=Pattern.compile(allColors);
-        Matcher matcher=pattern.matcher(s);
+    public int getColor(String s) {
+
+        if (s.length() > 25) {
+            Toast.makeText(context, context.getText(R.string.color_to_long), Toast.LENGTH_SHORT);
+            return Color.argb(255, 0, 0, 0);
+        }
+
+
+        Pattern pattern = Pattern.compile(allColors);
+        Matcher matcher = pattern.matcher(s);
 
         if (matcher.find()) {
             Pattern p = Pattern.compile(hashColorValidator);
             Matcher m = p.matcher(matcher.group());
+
+            if (m.find()) return Color.parseColor("#" + matcher.group());
+        } else {
+
             Pattern pp = Pattern.compile(oneColorValidator);
-            Matcher mm = p.matcher(matcher.group());
+            Matcher mm = pp.matcher(matcher.group());
             int r;
             int g;
             int b;
             int a;
+            mm.find();
+            a = Integer.parseInt(mm.group());
+            mm.find();
+            r = Integer.parseInt(mm.group());
+            mm.find();
+            g = Integer.parseInt(mm.group());
+            mm.find();
 
-            if(m.find()){
-				return Color.parseColor("#"+matcher.group());
-			}else {
-                if(s.contains("argb")){
-                    mm.find();
-                    a = Integer.parseInt(m.group());
-                    mm.find();
-                    r = Integer.parseInt(m.group());
-                    mm.find();
-                    g = Integer.parseInt(m.group());
-                    mm.find();
-                    try{
-                        b = Integer.parseInt(m.group());
-                    }catch (NumberFormatException e){
-                        b=a;
-                        a=255;
-                        Toast.makeText(context,context.getResources().getText(R.string.color_wrong_format),Toast.LENGTH_SHORT);
-                    }
-
+            try {
+                b = Integer.parseInt(mm.group());
+            } catch (NumberFormatException e) {
+                try {
+                    float f = Float.parseFloat(mm.group());
+                    b = g;
+                    g = r;
+                    r = a;
+                    if (f <= 1 && f >= 0) a = (int) (255 * f);
+                    else a = 1;
                     return Color.argb(a, r, g, b);
-                }else if(s.contains("rgba")){
-
-                }else{
-
+                } catch (NumberFormatException ex) {
+                    Toast.makeText(context, context.getResources().getText(R.string.color_wrong_format), Toast.LENGTH_SHORT);
+                    return Color.rgb(0, 0, 0);
                 }
-				
-			}
+            }
+            if(s.contains("rgba")){
+            return Color.argb(255,a,r,g);
+            }else
+            return Color.argb(a, r, g, b);
 
-
-           /* switch (matcher.group().length()) {
-
-                case 6:
-                    return Color.parseColor("#" + matcher.group());
-                case 8:
-                    return Color.parseColor("#" + matcher.group());
-                case 11:
-                    m.find();
-                    r = Integer.parseInt(m.group());
-                    m.find();
-                    g = Integer.parseInt(m.group());
-                    m.find();
-                    b = Integer.parseInt(m.group());
-                    return Color.rgb(r, g, b);
-                case 15:
-
-                    m.find();
-                    a = Integer.parseInt(m.group());
-                    m.find();
-                    r = Integer.parseInt(m.group());
-                    m.find();
-                    g = Integer.parseInt(m.group());
-                    m.find();
-                    b = Integer.parseInt(m.group());
-                    return Color.argb(a, r, g, b);
-            }*/
 
         }
 
-        return Color.rgb(0,0,0);
+        return Color.rgb(0, 0, 0);
     }
 
 }

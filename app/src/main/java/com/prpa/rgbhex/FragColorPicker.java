@@ -192,12 +192,12 @@ public class FragColorPicker extends Fragment
                         Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.paste_nothing_there), Toast.LENGTH_SHORT).show();
                     }
                     if(pasteText!=null){
-                        int pasteColor=parseColor(pasteText);
-                        if(pasteColor!=0){
-
-                        }else{
-                            Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.paste_error), Toast.LENGTH_SHORT).show();
-                        }
+                        ColorValidator cv=new ColorValidator(getActivity());
+                        int newColor=cv.getColor(pasteText);
+                        sbAlpha.setProgress(Color.alpha(newColor));
+                        sbRed.setProgress(Color.red(newColor));
+                        sbGreen.setProgress(Color.green(newColor));
+                        sbBlue.setProgress(Color.blue(newColor));
                     }
 
 				}else Log.e(TAG,"[fcp](largeButton.onClick) is ERROR");
