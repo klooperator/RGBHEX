@@ -34,14 +34,18 @@ public class ColorValidator {
         Matcher matcher=pattern.matcher(s);
 
         if (matcher.find()) {
-            Pattern p = Pattern.compile(oneColorValidator);
+            Pattern p = Pattern.compile(hashColorValidator);
             Matcher m = p.matcher(matcher.group());
             int r;
             int g;
             int b;
             int a;
 
-            
+            if(m.find()){
+				return Color.parseColor("#"+matcher.group());
+			}else {
+				
+			}
 
 
            /* switch (matcher.group().length()) {
