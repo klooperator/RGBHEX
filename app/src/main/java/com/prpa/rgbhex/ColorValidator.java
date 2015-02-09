@@ -1,6 +1,8 @@
 package com.prpa.rgbhex;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,13 +22,15 @@ public class ColorValidator {
     private String rgbColor;
     private String argbColor;
     private String rgbaColor;
+    Context context;
     //endregion
 
-    public ColorValidator(){
+    public ColorValidator(Context c){
         rgbColor=oneColorValidator+dot+oneColorValidator+dot+oneColorValidator;
         rgbaColor=rgbColor+dot+percentColorValidator;
         argbColor=rgbColor+dot+oneColorValidator;
         allColors=hashColorValidator+"|"+rgbaColor+"|"+argbColor+"|"+rgbColor;
+        context=c;
     }
 
     public int getColor(String s){
@@ -36,6 +40,8 @@ public class ColorValidator {
         if (matcher.find()) {
             Pattern p = Pattern.compile(hashColorValidator);
             Matcher m = p.matcher(matcher.group());
+            Pattern pp = Pattern.compile(oneColorValidator);
+            Matcher mm = p.matcher(matcher.group());
             int r;
             int g;
             int b;
@@ -44,6 +50,28 @@ public class ColorValidator {
             if(m.find()){
 				return Color.parseColor("#"+matcher.group());
 			}else {
+                if(s.contains("argb")){
+                    mm.find();
+                    a = Integer.parseInt(m.group());
+                    mm.find();
+                    r = Integer.parseInt(m.group());
+                    mm.find();
+                    g = Integer.parseInt(m.group());
+                    mm.find();
+                    try{
+                        b = Integer.parseInt(m.group());
+                    }catch (NumberFormatException e){
+                        b=a;
+                        a=255;
+                        Toast.makeText(context,context.getResources().getText(R.string.color_wrong_format),Toast.LENGTH_SHORT);
+                    }
+
+                    return Color.argb(a, r, g, b);
+                }else if(s.contains("rgba")){
+
+                }else{
+
+                }
 				
 			}
 
