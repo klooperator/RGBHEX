@@ -14,7 +14,7 @@ public class ColorValidator {
 
     //region Globals
     public static final String hashColorValidator="([A-Fa-f0-9]{8}|[A-Fa-f0-9]{6})";
-    public static final String oneColorValidator="([01]?\\d?\\d|2[0-4]\\d|25[0-5])";
+    public static final String oneColorValidator="(2[0-4]\\d|25[0-5]|[01]?\\d?\\d)";
     public static final String percentColorValidator="((0\\.[0-9]{1,2})|1)";
     public static final String dot="[\\,]";
 
@@ -53,38 +53,43 @@ public class ColorValidator {
 
             Pattern pp = Pattern.compile(oneColorValidator);
             Matcher mm = pp.matcher(matcher.group());
-            int r;
+            /*int r;
             int g;
             int b;
-            int a;
+            int a;*/
+			int first=0,second=0,third=0,fourth=0;
             mm.find();
-            a = Integer.parseInt(mm.group());
+            first = Integer.parseInt(mm.group());
             mm.find();
-            r = Integer.parseInt(mm.group());
+            second = Integer.parseInt(mm.group());
             mm.find();
-            g = Integer.parseInt(mm.group());
-            mm.find();
+            third = Integer.parseInt(mm.group());
+            if(mm.find()){
 
             try {
-                b = Integer.parseInt(mm.group());
+                fourth = Integer.parseInt(mm.group());
+				if(s.contains("rgba")) return Color.argb(255,first,second,third);
+				else return Color.argb(first,second,third,fourth);
             } catch (NumberFormatException e) {
                 try {
                     float f = Float.parseFloat(mm.group());
-                    b = g;
+                    /*b = g;
                     g = r;
-                    r = a;
-                    if (f <= 1 && f >= 0) a = (int) (255 * f);
-                    else a = 1;
-                    return Color.argb(a, r, g, b);
+                    r = a;*/
+                    if (f <= 1 && f >= 0) fourth = (int) (255 * f);
+                    else fourth = 1;
+                    return Color.argb(fourth, first, second, third);
                 } catch (NumberFormatException ex) {
                     Toast.makeText(context, context.getResources().getText(R.string.color_wrong_format), Toast.LENGTH_SHORT);
-                    return Color.rgb(0, 0, 0);
+                    return Color.rgb(first, second, third);
                 }
             }
-            if(s.contains("rgba")){
+			}else return Color.rgb(first,second,third);
+			
+           /* if(s.contains("rgba")){
             return Color.argb(255,a,r,g);
             }else
-            return Color.argb(a, r, g, b);
+            return Color.argb(a, r, g, b);*/
 
 
         }

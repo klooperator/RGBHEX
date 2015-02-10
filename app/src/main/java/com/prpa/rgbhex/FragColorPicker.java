@@ -195,6 +195,7 @@ public class FragColorPicker extends Fragment
                         ColorValidator cv=new ColorValidator(getActivity());
                         int newColor=cv.getColor(pasteText);
                         sbAlpha.setProgress(Color.alpha(newColor));
+						if(Color.alpha(newColor)!=255)cbAlpha.setChecked(true);
                         sbRed.setProgress(Color.red(newColor));
                         sbGreen.setProgress(Color.green(newColor));
                         sbBlue.setProgress(Color.blue(newColor));
