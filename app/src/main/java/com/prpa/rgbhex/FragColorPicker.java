@@ -211,7 +211,7 @@ public class FragColorPicker extends Fragment
 		
 		buttonBackgroundChange=(Button)getActivity().findViewById(R.id.ButtonBackgroundColorChange);
 
-		buttonBackgroundChange.setText(CHANGE_TO_WHITE);
+		buttonBackgroundChange.setText(getText(R.string.change_to_white));
 		changeBackgroundState();
 		buttonBackgroundChange.setOnClickListener(new OnClickListener(){
 			@Override
@@ -587,16 +587,7 @@ public class FragColorPicker extends Fragment
 		
 		
 	}
-	private int parseColor(String s){
-        //#ff00ff00
-        //#ff00ff
-        //rgb(255,255,255)
-        //argb(255,255,255,255)
-        //rgba(255,255,255,0.3)
 
-
-        return 0;
-    }
 	private void resetPaste(){
 		Log.v(TAG,"[fcp]...resetPaste");
 		pasteOption=PasteOption.hex;
