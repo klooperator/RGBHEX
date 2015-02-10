@@ -49,7 +49,7 @@ public class ColorValidator {
             Matcher m = p.matcher(matcher.group());
 
             if (m.find()) return Color.parseColor("#" + matcher.group());
-        } else {
+        //} else {
 
             Pattern pp = Pattern.compile(oneColorValidator);
             Matcher mm = pp.matcher(matcher.group());
