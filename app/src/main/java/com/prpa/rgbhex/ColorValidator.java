@@ -36,7 +36,7 @@ public class ColorValidator {
     public int getColor(String s) {
 
         if (s.length() > 25) {
-            Toast.makeText(context, context.getText(R.string.color_to_long), Toast.LENGTH_SHORT);
+            //Toast.makeText(context, context.getText(R.string.color_to_long), Toast.LENGTH_SHORT).show();
             return Color.argb(255, 0, 0, 0);
         }
 
@@ -47,11 +47,11 @@ public class ColorValidator {
         if (matcher.find()) {
             Pattern p = Pattern.compile(hashColorValidator);
             Matcher m = p.matcher(matcher.group());
-
+			//Toast.makeText(context,"found something",Toast.LENGTH_SHORT).show();
             if (m.find()) return Color.parseColor("#" + matcher.group());
         //} else {
 
-            Pattern pp = Pattern.compile(oneColorValidator);
+            Pattern pp = Pattern.compile(percentColorValidator+"|"+oneColorValidator);
             Matcher mm = pp.matcher(matcher.group());
             /*int r;
             int g;
@@ -65,10 +65,15 @@ public class ColorValidator {
             mm.find();
             third = Integer.parseInt(mm.group());
             if(mm.find()){
-
+			Toast.makeText(context,"foun fourth number="+first+","+second+","+third,Toast.LENGTH_LONG).show();
             try {
                 fourth = Integer.parseInt(mm.group());
-				if(s.contains("rgba")) return Color.argb(255,first,second,third);
+				
+				if(s.contains("rgba")) {
+					Toast.makeText(context,"reached it....",Toast.LENGTH_LONG).show();
+					return Color.argb(255,first,second,third);
+				
+				}
 				else return Color.argb(first,second,third,fourth);
             } catch (NumberFormatException e) {
                 try {
@@ -80,7 +85,7 @@ public class ColorValidator {
                     else fourth = 1;
                     return Color.argb(fourth, first, second, third);
                 } catch (NumberFormatException ex) {
-                    Toast.makeText(context, context.getResources().getText(R.string.color_wrong_format), Toast.LENGTH_SHORT);
+                    Toast.makeText(context, context.getResources().getText(R.string.color_wrong_format), Toast.LENGTH_SHORT).show();
                     return Color.rgb(first, second, third);
                 }
             }
@@ -94,7 +99,7 @@ public class ColorValidator {
 
         }
 
-        return Color.rgb(0, 0, 0);
+        return Color.rgb(1, 0, 1);
     }
 
 }
