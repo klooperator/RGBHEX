@@ -449,7 +449,17 @@ public class FragColorPicker extends Fragment
 			});
 		//endregion
 		updateAll();
+		if(savedInstanceState!=null){
+			sbRed.setProgress(savedInstanceState.getInt("red",0));
+			sbGreen.setProgress(savedInstanceState.getInt("green",0));
+			sbBlue.setProgress(savedInstanceState.getInt("blue,0"));
+			sbAlpha.setProgress(savedInstanceState.getInt("alpha",0));
+			if(savedInstanceState.getBoolean("black") && buttonBackgroundChange.getText()==getResources().getText(R.string.change_to_black)){
+				changeBackgroundState();
+			}
+		}
     }
+	
 
 	@Override
 	public void onAttach(Activity activity)
@@ -476,6 +486,21 @@ public class FragColorPicker extends Fragment
 		
 		super.onStart();
 	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		outState.putInt("red",sbRed.getProgress());
+		outState.putInt("green",sbGreen.getProgress());
+		outState.putInt("blue",sbBlue.getProgress());
+		outState.putInt("alpha",sbAlpha.getProgress());
+		if(buttonBackgroundChange.getText()==getResources().getText(R.string.change_to_white)){
+			outState.putBoolean("black",true);
+			}else outState.putBoolean("black",false);
+			
+		super.onSaveInstanceState ( outState );
+	}
+	
 	
 	
 	public void updateAll(){

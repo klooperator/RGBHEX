@@ -15,7 +15,7 @@ public class ColorValidator {
     //region Globals
     public static final String hashColorValidator="([A-Fa-f0-9]{8}|[A-Fa-f0-9]{6})";
     public static final String oneColorValidator="(2[0-4]\\d|25[0-5]|[01]?\\d?\\d)";
-    public static final String percentColorValidator="((0\\.[0-9]{1,2})|1)";
+    public static final String percentColorValidator="(0\\.[0-9]{1,2})";
     public static final String dot="[\\,]";
 
     private String allColors;
@@ -69,8 +69,8 @@ public class ColorValidator {
             try {
                 fourth = Integer.parseInt(mm.group());
 				
-				if(s.contains("rgba")) {
-					Toast.makeText(context,"reached it....",Toast.LENGTH_LONG).show();
+				if(s.contains("rgba") && fourth==1) {
+				//	Toast.makeText(context,"reached it....",Toast.LENGTH_LONG).show();
 					return Color.argb(255,first,second,third);
 				
 				}
