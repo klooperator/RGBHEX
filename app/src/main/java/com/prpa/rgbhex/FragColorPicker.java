@@ -1,6 +1,7 @@
 package com.prpa.rgbhex;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -447,6 +448,37 @@ public class FragColorPicker extends Fragment
 				}
 				
 			});
+
+        tvColorTxt.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog=new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog);
+                dialog.setTitle(getResources().getString(R.string.dialog_title));
+                final EditText tvDialogText=(EditText)dialog.findViewById(R.id.tvDialog);
+                Button dialogButton=(Button)dialog.findViewById(R.id.dialogButton);
+                dialogButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(tvDialogText.getText().length()<=5){
+                            ColorValidator cv=new ColorValidator(getActivity());
+                            int color=cv.getColor(tvDialogText.getText().toString());
+                            sbRed.setProgress(Color.red(color));
+                            sbGreen.setProgress(Color.green(color));
+                            sbBlue.setProgress(Color.blue(color));
+                            sbAlpha.setProgress(Color.alpha(color));
+                            dialog.dismiss();
+                        }else{
+                            Toast.makeText(getActivity(),getResources().getString(R.string.color_to_long),Toast.LENGTH_LONG).show();
+                        }
+
+
+
+                    }
+                });
+                dialog.show();
+            }
+        });
 		//endregion
 		updateAll();
 		if(savedInstanceState!=null){

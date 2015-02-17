@@ -257,8 +257,9 @@
             android:text="Color"
             android:id="@+id/tvColorTxt"
             android:layout_marginTop="@dimen/top_gap"
-			android:editable="true"
-			android:clickable="true"/>
+			android:editable="false"
+			android:clickable="true"
+            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
 	

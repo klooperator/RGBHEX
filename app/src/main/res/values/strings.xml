@@ -20,6 +20,15 @@
     <string name="color_wrong_format">Wrong color format</string>
     <string name="color_to_long">That\'s not a color
     Not even going to bother with it...</string>
+    <string name="dialog_title">ENTER COLOR</string>
+    <string name="dialog_description">Accepting formats:\n
+    [#][ff]ffffff\n
+    [rgb()]255,255,255\n
+    [rgba()]255,255,255,0.9\n
+    [argb()]255,255,255,255\n
+    [optional]</string>
+    <string name="dialog_done">done</string>
+
 
 
 </resources>

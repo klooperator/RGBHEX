@@ -65,7 +65,7 @@ public class ColorValidator {
             mm.find();
             third = Integer.parseInt(mm.group());
             if(mm.find()){
-			Toast.makeText(context,"foun fourth number="+first+","+second+","+third,Toast.LENGTH_LONG).show();
+			//Toast.makeText(context,"foun fourth number="+first+","+second+","+third,Toast.LENGTH_LONG).show();
             try {
                 fourth = Integer.parseInt(mm.group());
 				
