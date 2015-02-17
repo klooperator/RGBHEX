@@ -460,13 +460,14 @@ public class FragColorPicker extends Fragment
                 dialogButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(tvDialogText.getText().length()<=5){
+                        if(tvDialogText.getText().length()>5){
                             ColorValidator cv=new ColorValidator(getActivity());
                             int color=cv.getColor(tvDialogText.getText().toString());
                             sbRed.setProgress(Color.red(color));
                             sbGreen.setProgress(Color.green(color));
                             sbBlue.setProgress(Color.blue(color));
                             sbAlpha.setProgress(Color.alpha(color));
+							if(sbAlpha.getProgress()<255)cbAlpha.setChecked(true);
                             dialog.dismiss();
                         }else{
                             Toast.makeText(getActivity(),getResources().getString(R.string.color_to_long),Toast.LENGTH_LONG).show();
@@ -486,6 +487,7 @@ public class FragColorPicker extends Fragment
 			sbGreen.setProgress(savedInstanceState.getInt("green",0));
 			sbBlue.setProgress(savedInstanceState.getInt("blue,0"));
 			sbAlpha.setProgress(savedInstanceState.getInt("alpha",0));
+			if(sbAlpha.getProgress()<255)cbAlpha.setChecked(true);
 			if(savedInstanceState.getBoolean("black") && buttonBackgroundChange.getText()==getResources().getText(R.string.change_to_black)){
 				changeBackgroundState();
 			}
