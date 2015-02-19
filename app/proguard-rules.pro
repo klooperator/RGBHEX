@@ -15,6 +15,17 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--optimizationpasses 2
+-injars       libs/In.jar
+-outjars      libs/Out.jar
+-dontpreverify
+-repackageclasses ''
+-allowaccessmodification
+-optimizations !code/simplification/arithmetic
+-optimizationpasses 5
 -ignorewarnings
+-assumenosideeffects class android.util.Log { *; }
 
+
+
+#http://androidcookbook.com/Recipe.seam?recipeId=2111
+#http://omgitsmgp.com/2013/09/09/a-conservative-guide-to-proguard-for-android/
