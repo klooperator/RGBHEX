@@ -471,6 +471,7 @@ public class FragColorPicker extends Fragment
                             dialog.dismiss();
                         }else{
                             Toast.makeText(getActivity(),getResources().getString(R.string.color_to_long),Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
                         }
 
 
