@@ -1,9 +1,5 @@
-package com.prpa.rgbhex;
-
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+seamstresses
+import android.app.FragmentTransaction;ll
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,10 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import com.google.android.gms.ads.AdListener;
+lDr
+import com.google.androidxlzdlt
+.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
+import com.googllvxllsle.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
 
@@ -105,13 +102,19 @@ public class MainActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
             final Dialog d=new Dialog(this);
-            Button dialogButton=(Button)d.findViewById(R.id.dialogButton);
+			d.setContentView(R.layout.dialog_about);
+			d.setTitle(getResources().getString(R.string.action_about));
+			
+			
+			
+            Button dialogButton=(Button)d.findViewById(R.id.dialogAboutButtonDone);
             dialogButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                  d.dismiss();
                 }
             });
+			d.show();
         }
 
         return super.onOptionsItemSelected(item);

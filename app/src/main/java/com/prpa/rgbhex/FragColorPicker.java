@@ -460,6 +460,7 @@ public class FragColorPicker extends Fragment
                 dialogButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
+						if(tvDialogText.getText().length()==0)dialog.dismiss();
                         if(tvDialogText.getText().length()>5){
                             ColorValidator cv=new ColorValidator(getActivity());
                             int color=cv.getColor(tvDialogText.getText().toString());
